@@ -1,0 +1,60 @@
+{
+  "name": "coc-buf-lint",
+  "version": "0.0.0-development",
+  "description": "buf lint extension for coc.nvim",
+  "author": "gaborszakacs",
+  "license": "Apache",
+  "main": "lib/index.js",
+  "keywords": ["coc.nvim", "buf"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaborszakacs/coc-buf-lint.git"
+  },
+  "engines": {
+    "coc": "^0.0.80"
+  },
+  "scripts": {
+    "lint": "eslint src --ext ts",
+    "clean": "rimraf lib",
+    "watch": "node esbuild.js --watch",
+    "build": "node esbuild.js",
+    "prepare": "node esbuild.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "semi": true
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "coc.nvim": "^0.0.80",
+    "esbuild": "^0.8.42",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  },
+  "activationEvents": ["*"],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "coc-buf-lint configuration",
+      "properties": {
+        "buf.binaryPath": {
+          "type": "string",
+          "default": "buf",
+          "description": "Path to the buf binary"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "buf.lint",
+        "title": "Lint protobuf files using Buf"
+      }
+    ]
+  }
+}
